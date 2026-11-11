@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empresas donde quiero trabajar</title>
+
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Variables de diseño =====
+       Idea de layout: una columna de lectura; cada lugar es una fila
+       con su número grande a la izquierda y el texto a la derecha. */
+    :root {
+      --fondo: #f3f6f4;
+      --superficie: #ffffff;
+      --texto: #17262b;
+      --texto-suave: #52656b;
+      --acento: #0d6b6e;      /* verde azulado */
+      --resalte: #e0a100;     /* mostaza */
+      --linea: #d5dedb;
+
+      --fuente-titulo: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+      --fuente-texto: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+    }
+
+    /* Tema oscuro (según el sistema del visitante) */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --fondo: #101a1d;
+        --superficie: #18262a;
+        --texto: #e8efed;
+        --texto-suave: #9db0b3;
+        --acento: #5cc4c0;
+        --resalte: #f0b92e;
+        --linea: #2b3d42;
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --fondo: #101a1d;
+      --superficie: #18262a;
+      --texto: #e8efed;
+      --texto-suave: #9db0b3;
+      --acento: #5cc4c0;
+      --resalte: #f0b92e;
+      --linea: #2b3d42;
+    }
+
+    /* ===== Estilos base ===== */
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: var(--fuente-texto);
+      font-size: 1.125rem;
+      line-height: 1.65;
+    }
+
+    .contenedor {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--fuente-titulo);
+      line-height: 1.15;
+      text-wrap: balance;
+      margin: 0;
+    }
+
+    p { margin: 0; }
+
+    a { color: var(--acento); }
+
+    a:focus-visible {
+      outline: 3px solid var(--resalte);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ===== Encabezado ===== */
+    .encabezado {
+      border-bottom: 1px solid var(--linea);
+      padding: 56px 0 40px;
+    }
+
+    .encabezado .contenedor {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .autor {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--texto-suave);
+    }
+
+    .encabezado h1 {
+      font-size: clamp(2.1rem, 6vw, 3.4rem);
+      font-weight: 700;
+    }
+
+    /* Subrayado mostaza en la palabra clave del título */
+    .encabezado h1 span {
+      background: linear-gradient(transparent 68%, var(--resalte) 68%);
+    }
+
+    .subtitulo {
+      color: var(--texto-suave);
+      max-width: 60ch;
+    }
+
+    /* ===== Menú de navegación ===== */
+    .menu ul {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .menu a {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid var(--linea);
+      border-radius: 999px;
+      background: var(--superficie);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .menu a:hover { border-color: var(--acento); }
+
+    /* ===== Lista de lugares ===== */
+    .lugares {
+      list-style: none;
+      margin: 0;
+      padding: 16px 0;
+    }
+
+    .lugar {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .numero {
+      font-family: var(--fuente-titulo);
+      font-size: 3.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--acento);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lugar-texto {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .lugar h2 { font-size: 1.6rem; font-weight: 700; }
+
+    .etiqueta {
+      align-self: flex-start;
+      padding: 2px 10px;
+      border-left: 4px solid var(--resalte);
+      background: var(--superficie);
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .lugar p { max-width: 65ch; }
+
+    /* Enlace al sitio oficial de cada lugar */
+    .enlace {
+      align-self: flex-start;
+      font-weight: 600;
+      text-underline-offset: 4px;
+    }
+
+    .enlace:hover { text-decoration-thickness: 2px; }
+
+    /* ===== Conclusión ===== */
+    .conclusion {
+      margin: 40px 0 56px;
+      padding: 32px;
+      background: var(--superficie);
+      border: 1px solid var(--linea);
+      border-top: 6px solid var(--acento);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .conclusion h2 { font-size: 1.5rem; }
+
+    .conclusion p { max-width: 65ch; }
+
+    /* ===== Pie de página ===== */
+    .pie {
+      border-top: 1px solid var(--linea);
+      padding: 24px 0 40px;
+      color: var(--texto-suave);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Adaptación a celular ===== */
+    @media (max-width: 560px) {
+      body { font-size: 1.05rem; }
+      .encabezado { padding: 40px 0 28px; }
+      .lugar { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+      .numero { font-size: 2.6rem; }
+      .conclusion { padding: 24px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="contenedor">
+      <p class="autor">José Manuel Barraza Chapa · Programación Web</p>
+
+      <h1>Lugares en los que me gustaría involucrarme <span>profesionalmente</span></h1>
+
+      <p class="subtitulo">Cuatro empresas donde me gustaría aplicar lo que estoy aprendiendo en mi carrera.</p>
+
+      <nav class="menu" aria-label="Empresas">
+        <ul>
+          <li><a href="#softtek">Softtek</a></li>
+          <li><a href="#epam-neoris">EPAM NEORIS</a></li>
+          <li><a href="#cemex">CEMEX</a></li>
+          <li><a href="#femsa">FEMSA</a></li>
+          <li><a href="#conclusion">Conclusión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenedor">
+
+    <ol class="lugares">
+
+      <li class="lugar" id="softtek">
+        <span class="numero" aria-hidden="true">01</span>
+        <div class="lugar-texto">
+          <h2>Softtek</h2>
+          <span class="etiqueta">Desarrollo de software</span>
+          <p>Me gustaría trabajar en esta empresa porque se especializa en tecnología y desarrollo de software. Considero que sería una buena oportunidad para aplicar mis conocimientos de programación, aprender sobre sistemas y adquirir experiencia profesional.</p>
+          <a class="enlace" href="https://www.softtek.com/" target="_blank" rel="noopener">Visitar softtek.com &rarr;</a>
+        </div>
+      </li>
+
+      <li class="lugar" id="epam-neoris">
+        <span class="numero" aria-hidden="true">02</span>
+        <div class="lugar-texto">
+          <h2>EPAM NEORIS</h2>
+          <span class="etiqueta">Soluciones digitales</span>
+          <p>Me interesa porque trabaja en proyectos tecnológicos y soluciones digitales para diferentes empresas. Me gustaría formar parte de un equipo de trabajo donde pueda desarrollar mis habilidades de análisis, programación y resolución de problemas.</p>
+          <a class="enlace" href="https://neoris.com/" target="_blank" rel="noopener">Visitar neoris.com &rarr;</a>
+        </div>
+      </li>
+
+      <li class="lugar" id="cemex">
+        <span class="numero" aria-hidden="true">03</span>
+        <div class="lugar-texto">
+          <h2>CEMEX</h2>
+          <span class="etiqueta">Sistemas y automatización</span>
+          <p>Me gustaría involucrarme en esta organización porque cuenta con diferentes departamentos administrativos y tecnológicos. Considero que podría desempeñarme en áreas relacionadas con sistemas, bases de datos y automatización de procesos.</p>
+          <a class="enlace" href="https://www.cemex.com/" target="_blank" rel="noopener">Visitar cemex.com &rarr;</a>
+        </div>
+      </li>
+
+      <li class="lugar" id="femsa">
+        <span class="numero" aria-hidden="true">04</span>
+        <div class="lugar-texto">
+          <h2>FEMSA</h2>
+          <span class="etiqueta">Administración y análisis de información</span>
+          <p>Me interesa porque es una empresa grande que requiere organización, administración y herramientas tecnológicas para desarrollar sus operaciones. Me gustaría trabajar en un ambiente de oficina donde pueda combinar mis conocimientos de sistemas con actividades administrativas y análisis de información.</p>
+          <a class="enlace" href="https://www.femsa.com/" target="_blank" rel="noopener">Visitar femsa.com &rarr;</a>
+        </div>
+      </li>
+
+    </ol>
+
+    <!-- CONCLUSIÓN -->
+    <section class="conclusion" id="conclusion">
+      <h2>Conclusión</h2>
+      <p>Me gustaría desarrollarme profesionalmente en una empresa donde pueda trabajar en un entorno de oficina, utilizar herramientas tecnológicas, resolver problemas y continuar aprendiendo. También considero importante tener oportunidades de crecimiento y trabajar en equipo.</p>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Página elaborada para la materia de Programación Web.</p>
+      <!-- Si quieres enlazar tu LinkedIn, agrega aquí:
+           <p><a href="https://www.linkedin.com/in/tu-usuario">Mi perfil de LinkedIn</a></p> -->
+    </div>
+  </footer>
+
+</body>
+</html>
