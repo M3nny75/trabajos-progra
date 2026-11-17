@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+  <!-- Ilustración: escritorio con laptop, taza y planta -->
+  <circle cx="165" cy="105" r="95" fill="#e0a100" opacity="0.25"/>
+  <!-- Laptop -->
+  <rect x="75" y="45" width="170" height="110" rx="10" fill="#17262b"/>
+  <rect x="85" y="55" width="150" height="90" rx="4" fill="#0d6b6e"/>
+  <g stroke-linecap="round" stroke-width="6" fill="none">
+    <line x1="98" y1="72" x2="150" y2="72" stroke="#ffffff"/>
+    <line x1="110" y1="88" x2="190" y2="88" stroke="#f0b92e"/>
+    <line x1="110" y1="104" x2="170" y2="104" stroke="#9fe0dc"/>
+    <line x1="98" y1="120" x2="135" y2="120" stroke="#ffffff"/>
+  </g>
+  <path d="M55 155h210l-12 18a8 8 0 0 1-7 4H74a8 8 0 0 1-7-4z" fill="#52656b"/>
+  <rect x="140" y="160" width="40" height="5" rx="2.5" fill="#d5dedb"/>
+  <!-- Taza -->
+  <rect x="262" y="140" width="28" height="34" rx="5" fill="#e0a100"/>
+  <path d="M290 148h6a7 7 0 0 1 0 14h-6" fill="none" stroke="#e0a100" stroke-width="5"/>
+  <!-- Planta -->
+  <path d="M38 150c-14-12-14-32-4-44 10 12 12 30 4 44z" fill="#12888b"/>
+  <path d="M40 150c2-16 12-28 26-32-2 16-10 28-26 32z" fill="#5cc4c0"/>
+  <rect x="26" y="150" width="28" height="26" rx="4" fill="#52656b"/>
+  <!-- Mesa -->
+  <rect x="10" y="176" width="300" height="8" rx="4" fill="#17262b"/>
+</svg>

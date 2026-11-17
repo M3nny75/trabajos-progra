@@ -94,11 +94,32 @@
       padding: 56px 0 40px;
     }
 
-    .encabezado .contenedor {
+    /* Texto a la izquierda e ilustración a la derecha */
+    .encabezado-fila {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .encabezado-texto {
+      flex: 1 1 380px;
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
+
+    .ilustracion {
+      flex: 0 1 230px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Iconos junto a los títulos */
+    h2 { display: flex; align-items: center; gap: 12px; }
+
+    .icono { flex: none; width: 44px; height: 44px; }
 
     .autor {
       font-size: 1rem;
@@ -241,22 +262,25 @@
 
   <!-- ENCABEZADO -->
   <header class="encabezado">
-    <div class="contenedor">
-      <p class="autor">José Manuel Barraza Chapa · Programación Web</p>
+    <div class="contenedor encabezado-fila">
+      <div class="encabezado-texto">
+        <p class="autor">José Manuel Barraza Chapa · Programación Web</p>
 
-      <h1>Lugares en los que me gustaría involucrarme <span>profesionalmente</span></h1>
+        <h1>Lugares en los que me gustaría involucrarme <span>profesionalmente</span></h1>
 
-      <p class="subtitulo">Cuatro empresas donde me gustaría aplicar lo que estoy aprendiendo en mi carrera.</p>
+        <p class="subtitulo">Cuatro empresas donde me gustaría aplicar lo que estoy aprendiendo en mi carrera.</p>
 
-      <nav class="menu" aria-label="Empresas">
-        <ul>
-          <li><a href="#softtek">Softtek</a></li>
-          <li><a href="#epam-neoris">EPAM NEORIS</a></li>
-          <li><a href="#cemex">CEMEX</a></li>
-          <li><a href="#femsa">FEMSA</a></li>
-          <li><a href="#conclusion">Conclusión</a></li>
-        </ul>
-      </nav>
+        <nav class="menu" aria-label="Empresas">
+          <ul>
+            <li><a href="#softtek">Softtek</a></li>
+            <li><a href="#epam-neoris">EPAM NEORIS</a></li>
+            <li><a href="#cemex">CEMEX</a></li>
+            <li><a href="#femsa">FEMSA</a></li>
+            <li><a href="#conclusion">Conclusión</a></li>
+          </ul>
+        </nav>
+      </div>
+      <img class="ilustracion" src="img/oficina.svg" alt="Ilustración de un escritorio con una laptop, una taza y una planta" width="320" height="220">
     </div>
   </header>
 
@@ -268,7 +292,7 @@
       <li class="lugar" id="softtek">
         <span class="numero" aria-hidden="true">01</span>
         <div class="lugar-texto">
-          <h2>Softtek</h2>
+          <h2><img class="icono" src="img/icono-codigo.svg" alt="Icono de código" width="44" height="44">Softtek</h2>
           <span class="etiqueta">Desarrollo de software</span>
           <p>Me gustaría trabajar en esta empresa porque se especializa en tecnología y desarrollo de software. Considero que sería una buena oportunidad para aplicar mis conocimientos de programación, aprender sobre sistemas y adquirir experiencia profesional.</p>
           <a class="enlace" href="https://www.softtek.com/" target="_blank" rel="noopener">Visitar softtek.com &rarr;</a>
@@ -278,7 +302,7 @@
       <li class="lugar" id="epam-neoris">
         <span class="numero" aria-hidden="true">02</span>
         <div class="lugar-texto">
-          <h2>EPAM NEORIS</h2>
+          <h2><img class="icono" src="img/icono-nube.svg" alt="Icono de nube" width="44" height="44">EPAM NEORIS</h2>
           <span class="etiqueta">Soluciones digitales</span>
           <p>Me interesa porque trabaja en proyectos tecnológicos y soluciones digitales para diferentes empresas. Me gustaría formar parte de un equipo de trabajo donde pueda desarrollar mis habilidades de análisis, programación y resolución de problemas.</p>
           <a class="enlace" href="https://neoris.com/" target="_blank" rel="noopener">Visitar neoris.com &rarr;</a>
@@ -288,7 +312,7 @@
       <li class="lugar" id="cemex">
         <span class="numero" aria-hidden="true">03</span>
         <div class="lugar-texto">
-          <h2>CEMEX</h2>
+          <h2><img class="icono" src="img/icono-datos.svg" alt="Icono de base de datos" width="44" height="44">CEMEX</h2>
           <span class="etiqueta">Sistemas y automatización</span>
           <p>Me gustaría involucrarme en esta organización porque cuenta con diferentes departamentos administrativos y tecnológicos. Considero que podría desempeñarme en áreas relacionadas con sistemas, bases de datos y automatización de procesos.</p>
           <a class="enlace" href="https://www.cemex.com/" target="_blank" rel="noopener">Visitar cemex.com &rarr;</a>
@@ -298,7 +322,7 @@
       <li class="lugar" id="femsa">
         <span class="numero" aria-hidden="true">04</span>
         <div class="lugar-texto">
-          <h2>FEMSA</h2>
+          <h2><img class="icono" src="img/icono-grafica.svg" alt="Icono de gráfica" width="44" height="44">FEMSA</h2>
           <span class="etiqueta">Administración y análisis de información</span>
           <p>Me interesa porque es una empresa grande que requiere organización, administración y herramientas tecnológicas para desarrollar sus operaciones. Me gustaría trabajar en un ambiente de oficina donde pueda combinar mis conocimientos de sistemas con actividades administrativas y análisis de información.</p>
           <a class="enlace" href="https://www.femsa.com/" target="_blank" rel="noopener">Visitar femsa.com &rarr;</a>
@@ -309,7 +333,7 @@
 
     <!-- CONCLUSIÓN -->
     <section class="conclusion" id="conclusion">
-      <h2>Conclusión</h2>
+      <h2><img class="icono" src="img/icono-meta.svg" alt="Icono de meta" width="44" height="44">Conclusión</h2>
       <p>Me gustaría desarrollarme profesionalmente en una empresa donde pueda trabajar en un entorno de oficina, utilizar herramientas tecnológicas, resolver problemas y continuar aprendiendo. También considero importante tener oportunidades de crecimiento y trabajar en equipo.</p>
     </section>
 
