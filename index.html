@@ -96,23 +96,21 @@
 
     /* Texto a la izquierda e ilustración a la derecha */
     .encabezado-fila {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 230px;
       align-items: center;
-      justify-content: space-between;
       gap: 24px;
     }
 
     .encabezado-texto {
-      flex: 1 1 380px;
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
     .ilustracion {
-      flex: 0 1 230px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 230px;
       height: auto;
     }
 
@@ -174,7 +172,8 @@
 
     .lugar {
       display: grid;
-      grid-template-columns: 88px 1fr;
+      grid-template-columns: 88px 1fr 170px;
+      align-items: start;
       gap: 24px;
       padding: 36px 0;
       border-bottom: 1px solid var(--linea);
@@ -208,6 +207,17 @@
     }
 
     .lugar p { max-width: 65ch; }
+
+    /* Logo de cada empresa, en un recuadro blanco */
+    .logo {
+      width: 170px;
+      height: 110px;
+      object-fit: contain;
+      background: #ffffff;
+      border: 1px solid var(--linea);
+      border-radius: 8px;
+      padding: 8px;
+    }
 
     /* Enlace al sitio oficial de cada lugar */
     .enlace {
@@ -243,11 +253,19 @@
       font-size: 0.95rem;
     }
 
+    /* En pantallas medianas el logo pasa debajo del texto */
+    @media (max-width: 760px) {
+      .encabezado-fila { grid-template-columns: 1fr; }
+      .lugar { grid-template-columns: 88px 1fr; }
+      .logo { grid-column: 2; }
+    }
+
     /* ===== Adaptación a celular ===== */
     @media (max-width: 560px) {
       body { font-size: 1.05rem; }
       .encabezado { padding: 40px 0 28px; }
       .lugar { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+      .logo { grid-column: 1; }
       .numero { font-size: 2.6rem; }
       .conclusion { padding: 24px 20px; }
     }
@@ -297,6 +315,7 @@
           <p>Me gustaría trabajar en esta empresa porque se especializa en tecnología y desarrollo de software. Considero que sería una buena oportunidad para aplicar mis conocimientos de programación, aprender sobre sistemas y adquirir experiencia profesional.</p>
           <a class="enlace" href="https://www.softtek.com/" target="_blank" rel="noopener">Visitar softtek.com &rarr;</a>
         </div>
+        <img class="logo" src="img/softtek.png" alt="Logo de Softtek">
       </li>
 
       <li class="lugar" id="epam-neoris">
@@ -307,6 +326,7 @@
           <p>Me interesa porque trabaja en proyectos tecnológicos y soluciones digitales para diferentes empresas. Me gustaría formar parte de un equipo de trabajo donde pueda desarrollar mis habilidades de análisis, programación y resolución de problemas.</p>
           <a class="enlace" href="https://neoris.com/" target="_blank" rel="noopener">Visitar neoris.com &rarr;</a>
         </div>
+        <img class="logo" src="img/epam.png" alt="Logo de EPAM">
       </li>
 
       <li class="lugar" id="cemex">
@@ -317,6 +337,7 @@
           <p>Me gustaría involucrarme en esta organización porque cuenta con diferentes departamentos administrativos y tecnológicos. Considero que podría desempeñarme en áreas relacionadas con sistemas, bases de datos y automatización de procesos.</p>
           <a class="enlace" href="https://www.cemex.com/" target="_blank" rel="noopener">Visitar cemex.com &rarr;</a>
         </div>
+        <img class="logo" src="img/cemex.png" alt="Logo de CEMEX">
       </li>
 
       <li class="lugar" id="femsa">
@@ -327,6 +348,7 @@
           <p>Me interesa porque es una empresa grande que requiere organización, administración y herramientas tecnológicas para desarrollar sus operaciones. Me gustaría trabajar en un ambiente de oficina donde pueda combinar mis conocimientos de sistemas con actividades administrativas y análisis de información.</p>
           <a class="enlace" href="https://www.femsa.com/" target="_blank" rel="noopener">Visitar femsa.com &rarr;</a>
         </div>
+        <img class="logo" src="img/femsa.png" alt="Logo de FEMSA">
       </li>
 
     </ol>
